@@ -1,0 +1,38 @@
+#style-table{
+    font: 13px;
+    font-family: Tahoma;
+    width: 90%;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: left;
+
+}
+th,td {
+  border-bottom: 1px solid white;
+}
+tr:nth-child(even){
+  background-color: #eeeff2;
+}
+
+tr:nth-child(odd){
+  background-color: #dfe1e7;
+}
+
+tbody > tr > td:nth-last-child(-n+3) {
+  text-align:center;
+}
+
+thead > tr > th:nth-last-child(-n+3){
+  text-align:center;
+}
+
+
+
+thead > tr > th{
+    background-color: #687291;
+    color: white;
+}   
+
+tfoot{
+  display: none;
+}

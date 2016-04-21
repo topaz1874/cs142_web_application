@@ -1,0 +1,32 @@
+table{
+  font-family: Tahoma;
+  font-size: 13px;
+  width: 100%;
+  white-space: nowrap;
+  text-decoration: none;
+  text-align:left;
+  border: solid 10px #d0d0ff;
+  padding: 20px;
+  /*background-color: lightblue;*/
+  /*margin-left :5px;
+  margin-right: 5px;*/
+  /*border-collapse: separate;*/
+
+
+}
+
+th:nth-last-child(-n+3) {
+  text-align: center;
+}
+
+td:nth-last-child(-n+3){
+  text-align: center;
+}
+
+
+tfoot > tr > th,
+tfoot> tr> td {
+  border-top: 2px solid black;
+  padding-top: 5px;
+
+}
