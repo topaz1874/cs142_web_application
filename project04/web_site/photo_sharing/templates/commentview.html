@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+    <title>New comments</title>
+
+{% endblock %}
+{% block body %}
+    <form action="" method="post">{% csrf_token %}
+    <p>
+        {% for field in comment_form %}
+            {{ field.errors }}
+        {% endfor %}
+    </p>
+    <p>
+        {{ comment_form.as_p }}
+    </p>
+
+
+    <input type="submit" name="comment_submit" value="Comments' add"/>
+
+    </form>
+    
+
+{% endblock %}

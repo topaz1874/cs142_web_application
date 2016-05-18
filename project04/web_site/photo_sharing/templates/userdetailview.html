@@ -1,0 +1,56 @@
+{% extends 'base.html' %}    
+{% load staticfiles %}
+{% load custom_markdown %}
+
+
+{% block title %}
+<title>{{user}}'s photos</title>
+{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <div class="container">
+        <h2>Hello, this is {{ user }} photos</h2>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        {% for photo in photo_list %}
+
+        <div class="col-sm-6 col-md-4">
+
+
+                {% if photo.image %}
+                <div class="thumbnail"><img src="{{ photo.image.url }}/" alt="{{photo.file_name}}" /></div>
+
+                    <div class="caption">
+                        <h5>{{photo.file_name}}</h5>
+                        <p>{{ photo.date_time|date:"y/m/d" }}</p>
+                        <br>
+                
+
+                        <ul class="list-group">                     
+                            {% for comment in photo.comments_set.all %}
+
+                            <li class="list-group-item">
+                                <a href="{% url 'userdetailview' comment.user.slug %}"> {{ comment.user }}</a>: {{ comment.comment|custom_markdown|truncatewords:20 }}
+                            </li>
+
+                            {% endfor %}
+
+                        </ul>
+
+
+                        <a class="btn btn-primary" href="{% url 'commentview' photo.id %}" role="button">Add comments?</a>
+                    </div>
+                {% endif %}
+
+        
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+{% endblock %}

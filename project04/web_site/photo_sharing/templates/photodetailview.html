@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo comment</title>
+</head>
+<body>
+<div>
+        <ul>
+
+        {% for comment in comment_list %}
+        <img src="{{ comment.photo.image.url}}/" alt="{{photo.file_name}}"/>
+        <li>
+            {{comment.user}}:{{comment.comment}}
+        </li>
+        {% endfor %}
+        </ul>
+</div>
+
+</body>
+</html>
