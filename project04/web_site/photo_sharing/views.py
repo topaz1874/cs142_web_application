@@ -50,7 +50,10 @@ def editview(request, user_slug):
     if request.method == 'POST':
         lst = request.POST.getlist('photo_id')
         for p_id in lst:
+            image = Photo.objects.get(id=p_id).image
+            image.delete(save=True)
             Photo.objects.get(id=p_id).delete()
+
         return redirect('userdetailview', user_slug=user_slug)
         # form = DeleteForm()
         # print form.is_valid()
