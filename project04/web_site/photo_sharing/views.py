@@ -2,31 +2,40 @@
 from django.shortcuts import render, get_list_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.views.generic import ListView
 
 from .models import User,Photo,Comments
 from .forms import ImageUploadForm, DeleteForm, CommentForm
 # Create your views here.
-def listview(request):
+def userlistview(request):
     context = {}
     context['users'] = User.objects.all()
-    return render(request, 'listview.html', context)
+    return render(request, 'userlistview.html', context)
 
+class photolistview(ListView):
 
+    template_name = 'photolistview.html'
+    context_object_name = 'photo_list'
+
+    def get_queryset(self):
+        return Photo.objects.all().order_by('user')
+
+# display user's photos
 def userdetailview(request, user_slug):
     user = User.objects.get(slug=user_slug)
     photo_list = get_list_or_404(Photo,user=user)
     return render(request, 'userdetailview.html', {'user': user,
                                                    'photo_list':photo_list,
                                                     })
-
-def uploadview(request, user_slug):
+# upload photos 
+def photouploadview(request, user_slug):
     user = User.objects.get(slug=user_slug)
     if request.method == 'POST':
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             newimage = Photo(image=request.FILES['imagefile'],user=user, file_name=request.FILES['imagefile'])
             newimage.save()
-            return HttpResponseRedirect(reverse('userdetailview',kwargs = {'user_slug': user_slug}))
+            return HttpResponseRedirect(reverse('userdetail',kwargs = {'user_slug': user_slug}))
     else:
         form = ImageUploadForm()
     return render(request, 'photoupload.html', {'form':form,
@@ -39,8 +48,8 @@ def uploadview(request, user_slug):
 #     photo.delete()
 #     return HttpResponseRedirect(reverse('userdetailview', kwargs={'user_slug': user.slug}))
 
-
-def editview(request, user_slug):
+# delete photos
+def photodeleteview(request, user_slug):
     user = User.objects.get(slug=user_slug)
     photos = Photo.objects.filter(user=user)
 
@@ -54,17 +63,17 @@ def editview(request, user_slug):
             image.delete(save=True)
             Photo.objects.get(id=p_id).delete()
 
-        return redirect('userdetailview', user_slug=user_slug)
+        return redirect('userdetail', user_slug=user_slug)
         # form = DeleteForm()
         # print form.is_valid()
 
         
-    return render(request, 'editview.html', {'photos': photos,
+    return render(request, 'photodeleteview.html', {'photos': photos,
                                              'form': form,
                                             })
     
-
-def commentview(request, photo_id):
+# add comments
+def commentcreateview(request, photo_id):
     photo = Photo.objects.get(id=photo_id)
 
     if request.method == 'POST':
@@ -74,9 +83,12 @@ def commentview(request, photo_id):
             comments = comment_form.cleaned_data['comments']
             user_slug = comment_form.cleaned_data['user']
             Comments.objects.create(user=User.objects.get(slug=user_slug), photo=photo, comment=comments)
-            return redirect('userdetailview', user_slug=photo.user.slug)
+            return redirect('userdetail', user_slug=photo.user.slug)
     else:
         comment_form = CommentForm()
 
-    return render(request, 'commentview.html', {'comment_form': comment_form,
+    return render(request, 'commentcreateview.html', {'comment_form': comment_form,
         })
+
+def comment_edit_view(request):pass
+

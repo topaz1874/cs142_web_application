@@ -4,10 +4,10 @@ from . import views
 # app_name = photo_sharing
 
 urlpatterns = [
-
-    url(r'^$', views.listview,name='index'),
-    url(r'^(?P<user_slug>[-\w]+)/$', views.userdetailview,name='userdetailview'),
-    url(r'upload/(?P<user_slug>[-\w]+)/$', views.uploadview, name='uploadview'),
-    url(r'edit/(?P<user_slug>[-\w]+)/$',views.editview, name='editview'),
-    url(r'comment/(?P<photo_id>[0-9]+)/$', views.commentview, name='commentview'),
+    url(r'^$', views.userlistview,name='userindex'),
+    url(r'photo_index/$',views.photolistview.as_view(), name='photoindex'),
+    url(r'user/(?P<user_slug>[-\w]+)/$', views.userdetailview,name='userdetail'),
+    url(r'photo/upload/(?P<user_slug>[-\w]+)/$', views.photouploadview, name='photoupload'),
+    url(r'photo/delete/(?P<user_slug>[-\w]+)/$',views.photodeleteview, name='photodelete'),
+    url(r'comment/(?P<photo_id>[0-9]+)/$', views.commentcreateview, name='commentcreate'),
     ]

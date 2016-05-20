@@ -33,7 +33,7 @@
                             {% for comment in photo.comments_set.all %}
 
                             <li class="list-group-item">
-                                <a href="{% url 'userdetailview' comment.user.slug %}"> {{ comment.user }}</a>: {{ comment.comment|custom_markdown|truncatewords:20 }}
+                                <a href="{% url 'userdetail' comment.user.slug %}"> {{ comment.user }}</a>: {{ comment.comment|custom_markdown|truncatewords:20 }}
                             </li>
 
                             {% endfor %}
@@ -41,7 +41,7 @@
                         </ul>
 
 
-                        <a class="btn btn-primary" href="{% url 'commentview' photo.id %}" role="button">Add comments?</a>
+                        <a class="btn btn-primary" href="{% url 'commentcreate' photo.id %}" role="button">Add comments?</a>
                     </div>
                 {% endif %}
 
