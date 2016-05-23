@@ -21,19 +21,16 @@
 
 
                 {% if photo.image %}
-                <div class="thumbnail"><img src="{{ photo.image.url }}/" alt="{{photo.file_name}}" /></div>
+                <div class="thumbnail"><a href="{% url 'photodetail' photo.id %}"><img src="{{ photo.image.url }}/" alt="{{photo.file_name}}" /></a></div>
 
-                    <div class="caption">
-                        <h5>{{photo.file_name}}</h5>
-                        <p>{{ photo.date_time|date:"y/m/d" }}</p>
-                        <br>
-                
-
+                    <div class="caption">                
                         <ul class="list-group">                     
                             {% for comment in photo.comments_set.all %}
 
                             <li class="list-group-item">
                                 <a href="{% url 'userdetail' comment.user.slug %}"> {{ comment.user }}</a>: {{ comment.comment|custom_markdown|truncatewords:20 }}
+                                <br>
+                                <a href="{% url 'commentedit' comment.pk %} ">edit comments?</a>
                             </li>
 
                             {% endfor %}

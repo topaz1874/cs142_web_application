@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_list_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import User,Photo,Comments
 from .forms import ImageUploadForm, DeleteForm, CommentForm
@@ -19,6 +19,13 @@ class photolistview(ListView):
 
     def get_queryset(self):
         return Photo.objects.all().order_by('user')
+
+
+class photodetailview(DetailView):
+
+    template_name = 'photodetailview.html'
+    model = Photo
+
 
 # display user's photos
 def userdetailview(request, user_slug):
@@ -90,5 +97,19 @@ def commentcreateview(request, photo_id):
     return render(request, 'commentcreateview.html', {'comment_form': comment_form,
         })
 
-def comment_edit_view(request):pass
+def comment_edit_view(request, comment_id):
+    c = Comments.objects.get(id=comment_id)
+    form = CommentForm(request.POST or None, initial={'user' :c.user.slug,
+                                                      'comments': c.comment})
+    if form.is_valid():
+        c.comment = form.cleaned_data['comments']
+        c.save()
+        return redirect('userdetail', user_slug=c.user.slug)
+    return render(request, 'commentcreateview.html', {'comment_form':form})
+
+
+
+
+
+
 

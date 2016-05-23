@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Photo comment</title>
-</head>
-<body>
-<div>
-        <ul>
+{% extends 'base.html' %}
 
-        {% for comment in comment_list %}
-        <img src="{{ comment.photo.image.url}}/" alt="{{photo.file_name}}"/>
-        <li>
-            {{comment.user}}:{{comment.comment}}
-        </li>
-        {% endfor %}
-        </ul>
+{% block body %}
+
+<div class="container-fluid">
+        <img src={{ object.image.url }} alt={{ object.file_name }} >
+            <h5>{{object.file_name}}</h5>
+            <p>created on {{ object.date_time|date:"y/m/d" }}</p>   
+        <br> 
+        <a class="btn btn-default" href="{% url 'userdetail' object.user.slug %}" >go back?</a>
 </div>
 
-</body>
-</html>
+{% endblock %}
