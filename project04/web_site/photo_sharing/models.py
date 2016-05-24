@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.core.urlresolvers import reverse
 import datetime
 # Create your models here.
 class User(models.Model):
@@ -35,3 +36,6 @@ class Comments(models.Model):
 
     def __unicode__(self):
         return self.comment
+
+    def get_absolute_url(self):
+        return reverse('userdetail', kwargs={'user_slug':self.photo.user.slug,})

@@ -30,7 +30,10 @@
                             <li class="list-group-item">
                                 <a href="{% url 'userdetail' comment.user.slug %}"> {{ comment.user }}</a>: {{ comment.comment|custom_markdown|truncatewords:20 }}
                                 <br>
-                                <a href="{% url 'commentedit' comment.pk %} ">edit comments?</a>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+                                <a href="{% url 'commentedit' comment.pk %} ">
+                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                             </li>
 
                             {% endfor %}

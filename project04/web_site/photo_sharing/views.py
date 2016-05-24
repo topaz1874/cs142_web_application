@@ -3,6 +3,7 @@ from django.shortcuts import render, get_list_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views.generic import ListView, DetailView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 from .models import User,Photo,Comments
 from .forms import ImageUploadForm, DeleteForm, CommentForm
@@ -48,13 +49,6 @@ def photouploadview(request, user_slug):
     return render(request, 'photoupload.html', {'form':form,
                                                 'user': user, 
                                                 })
-
-# def photodeleteview(request, file_name):
-#     photo = Photo.objects.get(file_name=file_name)
-#     user = photo.user
-#     photo.delete()
-#     return HttpResponseRedirect(reverse('userdetailview', kwargs={'user_slug': user.slug}))
-
 # delete photos
 def photodeleteview(request, user_slug):
     user = User.objects.get(slug=user_slug)
@@ -80,35 +74,55 @@ def photodeleteview(request, user_slug):
                                             })
     
 # add comments
-def commentcreateview(request, photo_id):
-    photo = Photo.objects.get(id=photo_id)
+# def commentcreateview(request, photo_id):
+#     photo = Photo.objects.get(id=photo_id)
 
-    if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
+#     if request.method == 'POST':
+#         comment_form = CommentForm(request.POST)
 
-        if comment_form.is_valid():
-            comments = comment_form.cleaned_data['comments']
-            user_slug = comment_form.cleaned_data['user']
-            Comments.objects.create(user=User.objects.get(slug=user_slug), photo=photo, comment=comments)
-            return redirect('userdetail', user_slug=photo.user.slug)
-    else:
-        comment_form = CommentForm()
+#         if comment_form.is_valid():
+#             comments = comment_form.cleaned_data['comments']
+#             user_slug = comment_form.cleaned_data['user']
+#             Comments.objects.create(user=User.objects.get(slug=user_slug), photo=photo, comment=comments)
+#             return redirect('userdetail', user_slug=photo.user.slug)
+#     else:
+#         comment_form = CommentForm()
 
-    return render(request, 'commentcreateview.html', {'comment_form': comment_form,
-        })
+#     return render(request, 'comments_form.html', {'form': comment_form,
+#         })
 
-def comment_edit_view(request, comment_id):
-    c = Comments.objects.get(id=comment_id)
-    form = CommentForm(request.POST or None, initial={'user' :c.user.slug,
-                                                      'comments': c.comment})
-    if form.is_valid():
-        c.comment = form.cleaned_data['comments']
-        c.save()
-        return redirect('userdetail', user_slug=c.user.slug)
-    return render(request, 'commentcreateview.html', {'comment_form':form})
+class CommentCreate(CreateView):
+    model = Comments
+    template_name = 'comments_form.html'
+    fields = ['user', 'comment', 'photo']
 
+    def get_initial(self):
+        self.initial.update({
+            'photo': self.kwargs.get('pk'),
+            })
+        return super(CreateView, self).get_initial()
 
+# def comment_edit_view(request, comment_id):
+#     c = Comments.objects.get(id=comment_id)
+#     form = CommentForm(request.POST or None, initial={'user' :c.user.slug,
+#                                                       'comments': c.comment})
+#     if form.is_valid():
+#         c.comment = form.cleaned_data['comments']
+#         c.save()
+#         return redirect('userdetail', user_slug=c.user.slug)
+#     return render(request, 'commentcreateview.html', {'comment_form':form})
 
+class CommentUpdate(UpdateView):
+
+    model = Comments
+    fields = ['comment',]
+    template_name = 'comments_form.html'
+
+# class CommentDelete(DeleteView):
+
+#     model = Comments
+#     template_name = 'comments_confirm_delete.html'
+    # success_url = reverse('userindex')
 
 
 
