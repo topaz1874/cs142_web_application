@@ -11,6 +11,6 @@ urlpatterns = [
     url(r'photo/upload/(?P<user_slug>[-\w]+)/$', views.photouploadview, name='photoupload'),
     url(r'photo/delete/(?P<user_slug>[-\w]+)/$',views.photodeleteview, name='photodelete'),
     url(r'comment/(?P<pk>[0-9]+)/$', views.CommentCreate.as_view(), name='commentcreate'),
-    # url(r'comment/delete/(?P<pk>[0-9]+)/$', views.CommentDelete.as_view(), name='commentdelete'),
+    url(r'comment/delete/(?P<pk>[0-9]+)/$', views.CommentDelete.as_view(), name='commentdelete'),
     url(r'comment/edit/(?P<pk>[0-9]+)/$', views.CommentUpdate.as_view(), name='commentedit'),
     ]

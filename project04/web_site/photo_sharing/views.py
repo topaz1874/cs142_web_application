@@ -1,13 +1,24 @@
 
 from django.shortcuts import render, get_list_or_404, redirect
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse,reverse_lazy
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
 
 from .models import User,Photo,Comments
 from .forms import ImageUploadForm, DeleteForm, CommentForm
-# Create your views here.
+
+
+class LoginRequiredMixin(object):
+    @method_decorator(login_required)
+    def dispath(self, request, *args, **kwargs):
+        return super(LoginRequiredMixin, self
+            ).dispatch(request, *args, **kwargs)
+
+
 def userlistview(request):
     context = {}
     context['users'] = User.objects.all()
@@ -91,16 +102,22 @@ def photodeleteview(request, user_slug):
 #     return render(request, 'comments_form.html', {'form': comment_form,
 #         })
 
-class CommentCreate(CreateView):
+class CommentCreate(SuccessMessageMixin,CreateView):
     model = Comments
     template_name = 'comments_form.html'
     fields = ['user', 'comment', 'photo']
+    success_message = '%(user)s has successful created a comment.'
 
     def get_initial(self):
         self.initial.update({
             'photo': self.kwargs.get('pk'),
             })
         return super(CreateView, self).get_initial()
+
+    def form_valid(self, form):
+        # form.instance.user = self.request.user
+        return super(CommentCreate, self).form_valid(form)
+
 
 # def comment_edit_view(request, comment_id):
 #     c = Comments.objects.get(id=comment_id)
@@ -112,18 +129,27 @@ class CommentCreate(CreateView):
 #         return redirect('userdetail', user_slug=c.user.slug)
 #     return render(request, 'commentcreateview.html', {'comment_form':form})
 
-class CommentUpdate(UpdateView):
+class CommentUpdate(SuccessMessageMixin,UpdateView):
 
     model = Comments
     fields = ['comment',]
     template_name = 'comments_form.html'
+    success_message = '%(user)s has updated the comment.'
 
-# class CommentDelete(DeleteView):
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict (
+            cleaned_data,
+            user=self.object.user
+                       )
 
-#     model = Comments
-#     template_name = 'comments_confirm_delete.html'
-    # success_url = reverse('userindex')
+class CommentDelete(DeleteView):
 
+    model = Comments
+    template_name = 'comments_confirm_delete.html'
+
+    def get_success_url(self):
+        user = self.object.photo.user
+        return  reverse_lazy('userdetail',kwargs = {'user_slug': user.slug})
 
 
 
