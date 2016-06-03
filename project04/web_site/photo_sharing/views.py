@@ -135,7 +135,12 @@ class CommentUpdate(SuccessMessageMixin,UpdateView):
     fields = ['comment',]
     template_name = 'comments_form.html'
     success_message = '%(user)s has updated the comment.'
-
+    def form_valid(self,form):
+        orgin_comment = Comments.objects.get(photo=self.object.photo).comment
+        if orgin_comment != self.object.comment:
+            return super(CommentUpdate, self).form_valid(form)
+        else:
+            return HttpResponseRedirect(self.object.get_absolute_url())
     def get_success_message(self, cleaned_data):
         return self.success_message % dict (
             cleaned_data,
@@ -148,6 +153,7 @@ class CommentDelete(DeleteView):
     template_name = 'comments_confirm_delete.html'
 
     def get_success_url(self):
+        print dir(self)
         user = self.object.photo.user
         return  reverse_lazy('userdetail',kwargs = {'user_slug': user.slug})
 
