@@ -3,7 +3,7 @@ from django.shortcuts import render, get_list_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse,reverse_lazy
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView,FormView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
@@ -157,5 +157,37 @@ class CommentDelete(DeleteView):
         user = self.object.photo.user
         return  reverse_lazy('userdetail',kwargs = {'user_slug': user.slug})
 
+class CommentThread(FormView, DetailView):
+    model = Comments
+    context_object_name = 'comment'
+    template_name = 'commentsthread.html'
+    form_class = CommentForm
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentThread, self).get_context_data(**kwargs)
+        context['form'] = self.get_form()
+        return context 
+
+    def get_queryset(self):
+        return Comments.objects.filter(pk=self.kwargs.get('pk'))
 
 
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            parent_id = request.POST.get('parent_id')
+            parent_comment = Comments.objects.get(id=parent_id)
+            comment_text = form.cleaned_data['comments']
+            user = form.cleaned_data['user']
+            Comments.objects.create(
+                user=User.objects.get(slug=user),
+                comment=comment_text,
+                photo=parent_comment.photo,
+                parent=parent_comment)
+
+        return FormView.post(self, request, *args, **kwargs)
+
+
+    def get_success_url(self):
+        return reverse_lazy('commentthread',kwargs = {'pk': self.kwargs.get('pk')})

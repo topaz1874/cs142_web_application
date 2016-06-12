@@ -11,6 +11,6 @@ class PhotoAdmin(admin.ModelAdmin):
 
 @admin.register(Comments)
 class CommentAdmin(admin.ModelAdmin):
-    fields = ('comment','photo', 'user')
+    fields = ('comment','photo', 'user', 'parent')
 
-    list_display = ('comment',)
+    list_display = ('user','comment',)
