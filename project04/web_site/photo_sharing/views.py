@@ -136,7 +136,8 @@ class CommentUpdate(SuccessMessageMixin,UpdateView):
     template_name = 'comments_form.html'
     success_message = '%(user)s has updated the comment.'
     def form_valid(self,form):
-        orgin_comment = Comments.objects.get(photo=self.object.photo).comment
+        comment_id = self.object.id 
+        orgin_comment = Comments.objects.get(photo=self.object.photo,id=comment_id).comment
         if orgin_comment != self.object.comment:
             return super(CommentUpdate, self).form_valid(form)
         else:

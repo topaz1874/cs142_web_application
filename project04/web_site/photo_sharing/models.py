@@ -1,6 +1,8 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
+from mptt.fields import TreeForeignKey
+import mptt
 import datetime
 # Create your models here.
 class User(models.Model):
@@ -30,24 +32,18 @@ class Photo(models.Model):
 
 class Comments(models.Model):
     photo = models.ForeignKey(Photo)
-    parent = models.ForeignKey("self", null=True, blank=True)
     user = models.ForeignKey(User)
     date_time = models.DateTimeField(auto_now_add=True)
     comment = models.TextField()
+
 
     def __unicode__(self):
         return self.comment
 
     def get_absolute_url(self):
         return reverse('userdetail', kwargs={'user_slug':self.photo.user.slug,})
-    @property
-    def is_child(self):
-        if self.parent is not None:return True
-        else: return False
 
-    def get_children(self):
-        if not self.is_child:
-            return Comments.objects.filter(parent=self)
-        return None
+TreeForeignKey(Comments, blank=True, null=True, related_name='children',db_index=True).contribute_to_class(Comments, 'parent')
+mptt.register(Comments, order_insertion_by=['date_time'])
 
 

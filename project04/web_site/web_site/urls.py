@@ -22,6 +22,7 @@ from photo_sharing import urls as photo_urls
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^photo_sharing/',include(photo_urls)),
+    url(r'^articles/comments/', include('django_comments.urls')),
 ]
 
 if settings.DEBUG :
