@@ -5,10 +5,12 @@
     <div class="row">
         {% for photo in photo_list %}
         <div class="col-xs-6 col-md-3">
-            <a href="{% url 'userdetail' photo.user.slug %}" class="thumbnail" >
+            <a href={{photo.image.url}} class="thumbnail" data-gallery>
                 <img src={{photo.image.url}} alt={{photo.file_name}}>
             </a>
         </div>
+
+
         {% endfor %}
     </div>
 </div>

@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="jumbotron">
+<div class="jumbotron" style="display:none">
     <div class="container">
         <h2>Hello, this is {{ user }} photos</h2>
     </div>
@@ -26,19 +26,23 @@
                     <div class="caption">                
                         <ul class="media-list">                     
                             {% recursetree photo.comments_set.all  %}
+                            <div class="media">
                             <div class="media-left"></div>    
                             <div class="media-body">
                             <div class="media-head">
+
                                 <a href="{% url 'userdetail' node.user.slug %}"> {{ node.user }}</a>
                             </div>
                             {{ node.comment|custom_markdown|truncatewords:20 }}
 
                             <a href="{% url 'commentdelete' node.pk %}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                             <a href="{% url 'commentedit' node.pk %} "><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                            <a href="{% url 'commentthread' node.pk %} "><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></a>
                             
                                 {% if not node.is_leaf_node %}
                                     {{ children }}
                                 {% endif %}
+                            </div>
                             </div>
                             {% endrecursetree %}
 <!--   
@@ -93,5 +97,13 @@
     </div>
 </div>
 
+
+{% endblock %}
+{% block script %}
+<!--
+
+<script type='text/javascript' src="{% static 'js/custom_js.js' %}">
+</script>
+-->
 
 {% endblock %}
