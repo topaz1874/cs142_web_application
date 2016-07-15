@@ -1,6 +1,5 @@
 {% extends 'base.html' %}    
 {% load staticfiles %}
-{% load custom_markdown %}
 {% load mptt_tags %}
 
 {% block title %}
@@ -21,7 +20,7 @@
 
 
                 {% if photo.image %}
-                <div class="thumbnail"><a href="{% url 'photodetail' photo.id %}"><img src="{{ photo.image.url }}/" alt="{{photo.file_name}}" /></a></div>
+                <div class="thumbnail"><a href="{% url 'photo:photodetail' photo.id %}"><img src="{{ photo.image.url }}/" alt="{{photo.file_name}}" /></a></div>
 
                     <div class="caption">                
                         <ul class="media-list">                     
@@ -31,9 +30,9 @@
                             <div class="media-body">
                             <div class="media-head">
 
-                                <a href="{% url 'userdetail' node.user.slug %}"> {{ node.user }}</a>
+                                <a href="{% url 'photo:userdetail' node.user.slug %}"> {{ node.user }}</a>
                             </div>
-                            {{ node.comment|custom_markdown|truncatewords:20 }}
+                            {{ node.comment|truncatewords:20 }}
 
                             <a href="{% url 'commentdelete' node.pk %}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
                             <a href="{% url 'commentedit' node.pk %} "><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
@@ -45,7 +44,7 @@
                             </div>
                             </div>
                             {% endrecursetree %}
-<!--   
+                            {% comment %}
                             {% for comment in photo.comments_set.all %}
                             
 
@@ -82,7 +81,7 @@
                             
 
                             {% endfor %}
--->
+                            {% endcomment %}
                         </ul>
 
 

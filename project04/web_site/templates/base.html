@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% url 'userindex' %}">Home</a>
+                <a class="navbar-brand" href="{% url 'photo:userindex' %}">Home</a>
             </div>
 
             <!--item-->
@@ -33,12 +33,12 @@
                 
                 <ul class="nav navbar-nav">
                     <li class="">
-                        <a href="{% url 'userindex' %}">
+                        <a href="{% url 'photo:userindex' %}">
                             <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Users
                         </a>
                     </li>
                     <li>
-                        <a href="{% url 'photoindex' %}">
+                        <a href="{% url 'photo:photoindex' %}">
                             <span class="glyphicon glyphicon glyphicon-camera" aria-hidden="true"></span>&nbsp; Photos
                         </a>
                     </li>
@@ -52,6 +52,7 @@
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">
+                {% comment %}
                 {% if user.slug %}
                     <li class="">
                         <a href="{% url 'photodelete' user.slug %}">
@@ -69,7 +70,14 @@
                         <a href="#"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout</a>
                     </li>
                 {% endif %}   
+                {% endcomment %}
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'account:logout' %}"> {{user}} | logout </a> </li>
+                {% else %}
+                <li><a href="{% url 'account:login' %}"> login </a></li>
+                <li><a href="{% url 'account:register' %}">Register</a></li>
                 </ul>
+                {% endif %}
                 
             </div>
         </div>

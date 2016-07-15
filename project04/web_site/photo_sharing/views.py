@@ -22,11 +22,11 @@ class LoginRequiredMixin(object):
 def userlistview(request):
     context = {}
     context['users'] = User.objects.all()
-    return render(request, 'userlistview.html', context)
+    return render(request, 'photo_sharing/userlistview.html', context)
 
 class photolistview(ListView):
 
-    template_name = 'photolistview.html'
+    template_name = 'photo_sharing/photolistview.html'
     context_object_name = 'photo_list'
 
     def get_queryset(self):
@@ -43,7 +43,7 @@ class photodetailview(DetailView):
 def userdetailview(request, user_slug):
     user = User.objects.get(slug=user_slug)
     photo_list = get_list_or_404(Photo,user=user)
-    return render(request, 'userdetailview.html', {'user': user,
+    return render(request, 'photo_sharing/userdetailview.html', {'user': user,
                                                    'photo_list':photo_list,
                                                     })
 # upload photos 
@@ -57,7 +57,7 @@ def photouploadview(request, user_slug):
             return HttpResponseRedirect(reverse('userdetail',kwargs = {'user_slug': user_slug}))
     else:
         form = ImageUploadForm()
-    return render(request, 'photoupload.html', {'form':form,
+    return render(request, 'photo_sharing/photoupload.html', {'form':form,
                                                 'user': user, 
                                                 })
 # delete photos
@@ -80,7 +80,7 @@ def photodeleteview(request, user_slug):
         # print form.is_valid()
 
         
-    return render(request, 'photodeleteview.html', {'photos': photos,
+    return render(request, 'photo_sharing/photodeleteview.html', {'photos': photos,
                                              'form': form,
                                             })
     

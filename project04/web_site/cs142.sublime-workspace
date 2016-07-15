@@ -1,0 +1,556 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ge",
+				"GenericTabularInline	class"
+			],
+			[
+				"talks",
+				"talks:lists:list"
+			],
+			[
+				"try",
+				"try	Try/Except"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "list",
+		"selected_items":
+		[
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"upda",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"inst",
+				"Markdown Preview: Open Markdown Cheat sheet"
+			]
+		],
+		"width": 507.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site"
+	],
+	"file_history":
+	[
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/srvup/urls.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/notification/views.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/notification/all.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/notification/admin.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/comment/models.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/account/views.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/comment/views.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/video/views.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/notification/signals.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/notification/migrations/0001_initial.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/video/models.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/srvup/settings.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/video/admin.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/video/video_detail.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/comment/forms.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/notification/models.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/comment/comment_thread.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/base.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/account/models.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/comment/admin.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/account/forms.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/login.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/account/forms.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/account/admin.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/navbar.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/srvup/forms.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/srvup/views.py",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/LICENSE",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/.gitignore",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/README.md",
+		"/Users/tangpeng/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/tangpeng/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/video/category_detail.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/video/category_list.html",
+		"/Users/tangpeng/Desktop/code/beginning_projects/pycon/survivalguide.sublime-project",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/home.html",
+		"/Users/tangpeng/Desktop/code/srvup-membership-tp/src/templates/video/video_list.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/static/js/custom_js.js",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/models.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/base.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/forms.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/web_site/settings.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/userdetailview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/web_site/urls.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/urls.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/views.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/commentsthread.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/admin.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/photolistview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/photodeleteview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/.gitignore",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/comments_confirm_delete.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/comments_form.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/form-template.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/photodetailview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/commentcreateview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/userlistview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/commentview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/static/photo_sharing/css/style.css",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/listview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/photoupload.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templatetags/custom_markdown.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templatetags/__init__.py",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/photo_sharing/templates/editview.html",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/db.sqlite3",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/populate_data.py",
+		"/Users/tangpeng/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/tangpeng/Desktop/code/tutorial/cs142/project04/web_site/templates/listview.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/models.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templates/talks/talklist_form.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/forms.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/views.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/templates/accounts/login.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/survivalguide/urls.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/urls.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/tests.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templates/talks/talklist_list.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/survivalguide/views.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templates/talks/talk_detail.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/survivalguide/settings.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templatetags/talks_tags.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templates/talks/_stars.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templates/talks/_talk.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templates/talks/talklist_detail.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/templates/_layout/base.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templates/talks/talklist_delete.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/templates/talks/schedule.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/survivalguide/forms.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/talks/admin.py",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/survivalguide/templates/_layout/base.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/survivalguide/templates/home.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/survivalguide/templates/accounts/login.html",
+		"/Users/tangpeng/Desktop/beginning_projects/pycon/survivalguide/survivalguide/templates/accounts/signup.html",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/static/polls/style.css",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/static/polls",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/admin.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/bookstore/admin.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/tutorial_site/urls.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/bookstore/url.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/bookstore/templates/bookstore/publisher_list.html",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/bookstore/templates/bookstore/base.html",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/bookstore/models.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/bookstore/views.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/tutorial_site/settings.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/views.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/urls.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/templates/polls/index.html",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/templates/polls/results.html",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/models.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/templates/polls/detail.html",
+		"/usr/local/lib/python2.7/site-packages/django/core/urlresolvers.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/templates/admin/base_site.html",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/polls/tests.py",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/templates/admin/base_site.html",
+		"/Users/tangpeng/Desktop/in_the_news/tutorial_site/manage.py",
+		"/Users/tangpeng/Downloads/chapter_3_schema_design.d41301cc1bf6/homework_3_2/hw3-2and3-3/hw3-2and3-3/views/blog_template.tpl",
+		"/Users/tangpeng/Downloads/chapter_3_schema_design.d41301cc1bf6/homework_3_2/hw3-2and3-3/hw3-2and3-3/blog.py",
+		"/Users/tangpeng/Desktop/in_the_news/homework_2.2.py",
+		"/Users/tangpeng/Desktop/in_the_news/homework_3_1_answer.py",
+		"/Users/tangpeng/Desktop/in_the_news/homework_3_1.py",
+		"/Users/tangpeng/Downloads/chapter_3_schema_design.d41301cc1bf6/homework_3_2/hw3-2and3-3/hw3-2and3-3/blogPostDAO.py",
+		"/usr/local/lib/python2.7/site-packages/pymongo/collection.py",
+		"/Users/tangpeng/Desktop/in_the_news/mongo_test.py",
+		"/Users/tangpeng/Downloads/chapter_2_crud.9cf34b525be3/homework_2_3/login_logout_signup/login_logout_signup/userDAO.py",
+		"/Users/tangpeng/Desktop/in_the_news/hello_world.py",
+		"/Users/tangpeng/Desktop/in_the_news/mongodb.py",
+		"/Users/tangpeng/Desktop/in_the_news/hello_form.py",
+		"/Users/tangpeng/Desktop/in_the_news/hello.py"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/tangpeng/Desktop/beginning_projects/scrapy-examples/dmoz"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"date_of_birth",
+			"authent",
+			"    # 'allauth',\n    # 'allauth.account',\n    # 'allauth.socialaccount', ",
+			"user",
+			"update",
+			"form",
+			"reverse",
+			"url",
+			"editview",
+			"detailview",
+			"}}\"",
+			"}}\" ",
+			"ignore_vcs_packages",
+			"TalkTalkListForm",
+			"redirect",
+			"last_question_list",
+			"xxx",
+			"text",
+			"^http",
+			"parse_with_rules",
+			"info",
+			"}\n",
+			"info",
+			"requests",
+			"requests_cache",
+			"html",
+			"pq",
+			"pyquery",
+			"pygments",
+			"lxml",
+			"\"\"\")",
+			"goeat",
+			"()"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.anaconda_documentation":
+	{
+		"height": 112.0
+	},
+	"output.exec":
+	{
+		"height": 161.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "cs142.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": false,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"views",
+				"src/comment/views.py"
+			],
+			[
+				"models",
+				"src/comment/models.py"
+			],
+			[
+				"nav",
+				"src/templates/navbar.html"
+			],
+			[
+				"base",
+				"src/templates/base.html"
+			],
+			[
+				"admin",
+				"src/notification/admin.py"
+			],
+			[
+				"comment",
+				"src/comment/models.py"
+			],
+			[
+				"urls",
+				"src/srvup/urls.py"
+			],
+			[
+				"signals",
+				"src/notification/signals.py"
+			],
+			[
+				"settings",
+				"src/srvup/settings.py"
+			],
+			[
+				"view",
+				"src/video/views.py"
+			],
+			[
+				"thre",
+				"src/templates/comment/comment_thread.html"
+			],
+			[
+				"setin",
+				"src/srvup/settings.py"
+			],
+			[
+				"thread",
+				"src/templates/comment/comment_thread.html"
+			],
+			[
+				"forms",
+				"src/comment/forms.py"
+			],
+			[
+				"se",
+				"src/srvup/settings.py"
+			],
+			[
+				"url",
+				"src/srvup/urls.py"
+			],
+			[
+				"video",
+				"src/templates/video/video_detail.html"
+			],
+			[
+				"set",
+				"src/srvup/settings.py"
+			],
+			[
+				"sett",
+				"src/srvup/settings.py"
+			],
+			[
+				"models.",
+				"src/account/models.py"
+			],
+			[
+				"froms",
+				"src/account/forms.py"
+			],
+			[
+				"urls.p",
+				"src/srvup/urls.py"
+			],
+			[
+				"ad",
+				"src/account/admin.py"
+			],
+			[
+				"vide",
+				"src/templates/video/video_detail.html"
+			],
+			[
+				"settings.py",
+				"src/srvup/settings.py"
+			],
+			[
+				"video_dei",
+				"src/templates/video/video_detail.html"
+			],
+			[
+				"detail",
+				"src/templates/video/category_detail.html"
+			],
+			[
+				"cate",
+				"src/templates/video/category_list.html"
+			],
+			[
+				"mode",
+				"src/video/models.py"
+			],
+			[
+				"videos",
+				"src/templates/video/video_list.html"
+			],
+			[
+				"",
+				"src/templates/home.html"
+			],
+			[
+				"home",
+				"src/templates/home.html"
+			],
+			[
+				"urls.",
+				"src/srvup/urls.py"
+			],
+			[
+				"base.h",
+				"web_site/photo_sharing/templates/base.html"
+			],
+			[
+				"base.html",
+				"web_site/photo_sharing/templates/base.html"
+			],
+			[
+				"urls.py",
+				"web_site/photo_sharing/urls.py"
+			],
+			[
+				"forms.py",
+				"web_site/photo_sharing/forms.py"
+			],
+			[
+				"userdeta",
+				"web_site/photo_sharing/templates/userdetailview.html"
+			],
+			[
+				"settt",
+				"web_site/web_site/settings.py"
+			],
+			[
+				"userd",
+				"web_site/photo_sharing/templates/userdetailview.html"
+			],
+			[
+				"edit",
+				"web_site/photo_sharing/templates/editview.html"
+			],
+			[
+				"pop",
+				"web_site/populate_data.py"
+			],
+			[
+				"detai",
+				"web_site/photo_sharing/templates/photodetailview.html"
+			],
+			[
+				"pho",
+				"web_site/photo_sharing/templates/photodetailview.html"
+			],
+			[
+				"ur",
+				"web_site/web_site/urls.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Desktop/beginning_projects/wiki/wiki_site/wiki_site/wiki.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 287.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 203.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

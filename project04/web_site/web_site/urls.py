@@ -17,12 +17,13 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from photo_sharing import urls as photo_urls
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^photo_sharing/',include(photo_urls)),
+    url(r'^photo_sharing/',include('photo_sharing.urls', namespace='photo')),
     url(r'^articles/comments/', include('django_comments.urls')),
+    url(r'^accounts/',include('accounts.urls', namespace='account')),
 ]
 
 if settings.DEBUG :

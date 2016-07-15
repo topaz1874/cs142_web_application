@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="col-sm-8 col-sm-offset-2">
+    <form action="" method="post">{% csrf_token %}
+
+    {{ form.as_p}}
+
+    <input class="btn btn-default" type="submit" name="Login"/>
+
+  </div>
+    
+</div>
+{% endblock %}

@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+AUTH_USER_MODEL = 'accounts.MyUser'
 # Application definition
 
 INSTALLED_APPS = (
@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     #3rd party apps
     'mptt',
     #my own app
+    'accounts',
     'photo_sharing',
 )
 
@@ -61,7 +62,7 @@ ROOT_URLCONF = 'web_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates"),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,7 +101,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
