@@ -21,7 +21,7 @@
 
                 {% if photo.image %}
                 <div class="thumbnail"><a href="{% url 'photo:photodetail' photo.id %}"><img src="{{ photo.image.url }}/" alt="{{photo.file_name}}" /></a></div>
-
+                    {% comment %}
                     <div class="caption">                
                         <ul class="media-list">                     
                             {% recursetree photo.comments_set.all  %}
@@ -44,49 +44,14 @@
                             </div>
                             </div>
                             {% endrecursetree %}
-                            {% comment %}
-                            {% for comment in photo.comments_set.all %}
                             
-
-                            
-                            {% if not comment.is_child %}
-                            <li class="media">
-                            <div class="media">
-                            <div class="media-left"></div>    
-                            <div class="media-body">
-                                <div class="media-head">
-                                <a href="{% url 'userdetail' comment.user.slug %}"> {{ comment.user }}</a>
-                                </div>
-                            {{ comment.comment|custom_markdown|truncatewords:20 }}
-
-                            <a href="{% url 'commentdelete' comment.pk %}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                            <a href="{% url 'commentedit' comment.pk %} "><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                            <a href="{% url 'commentthread' comment.pk %} "><span class="glyphicon glyphicon-retweet" aria-hidden="true"></span></a>
-
-                            {% for child in comment.get_children %}
-                              <div class="media">
-                                <div class="media-left"></div>
-                                <div class="media-body">
-                                    <div class="media-head"><a href="{% url 'userdetail' child.user.slug %}">{{ child.user }}</a>
-                                    </div>
-                                {{ child.comment|custom_markdown }}
-                                </div>
-                              </div>
-                            {% endfor %}
-                            </div>
-    
-                            </div>
-                            {% endif %}
-                            </li>
-                            
-
-                            {% endfor %}
-                            {% endcomment %}
                         </ul>
 
 
                         <a class="btn btn-primary" href="{% url 'commentcreate' photo.id %}" role="button">Add comments?</a>
                     </div>
+
+                    {% endcomment %}
                 {% endif %}
 
         

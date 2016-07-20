@@ -1,7 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
-)
+from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from django.core.urlresolvers import reverse
+from django.template.defaultfilters import slugify
 
 
 class MyUserManager(BaseUserManager):
@@ -47,6 +47,7 @@ class MyUser(AbstractBaseUser):
     username = models.CharField(max_length=128, unique=True)
     first_name = models.CharField(max_length=128, null=True, blank=True)
     last_name = models.CharField(max_length=128, null=True, blank=True)
+    slug = models.SlugField()
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
@@ -75,8 +76,16 @@ class MyUser(AbstractBaseUser):
         # Simplest possible answer: Yes, always
         return True
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.username)
+        super(MyUser, self).save(*args, **kwargs)
+
     @property
     def is_staff(self):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+
+    def get_absolute_url(self):
+        return reverse('photo:userdetail', kwargs={'user_slug': self.slug})

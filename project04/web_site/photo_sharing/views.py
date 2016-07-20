@@ -8,7 +8,8 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.messages.views import SuccessMessageMixin
 
-from .models import User,Photo,Comments
+from .models import Photo,Comments
+from accounts.models import MyUser
 from .forms import ImageUploadForm, DeleteForm, CommentForm
 
 
@@ -21,7 +22,7 @@ class LoginRequiredMixin(object):
 
 def userlistview(request):
     context = {}
-    context['users'] = User.objects.all()
+    context['users'] = MyUser.objects.all()
     return render(request, 'photo_sharing/userlistview.html', context)
 
 class photolistview(ListView):
@@ -35,26 +36,29 @@ class photolistview(ListView):
 
 class photodetailview(DetailView):
 
-    template_name = 'photodetailview.html'
+    template_name = 'photo_sharing/photodetailview.html'
     model = Photo
 
 
 # display user's photos
 def userdetailview(request, user_slug):
-    user = User.objects.get(slug=user_slug)
-    photo_list = get_list_or_404(Photo,user=user)
-    return render(request, 'photo_sharing/userdetailview.html', {'user': user,
+    user = MyUser.objects.get(slug=user_slug)
+    try:
+        photo_list = get_list_or_404(Photo,user=user)
+        return render(request, 'photo_sharing/userdetailview.html', {'user': user,
                                                    'photo_list':photo_list,
                                                     })
+    except:
+        return HttpResponseRedirect(reverse('photo:photoupload', kwargs={'user_slug': user.slug}))
 # upload photos 
 def photouploadview(request, user_slug):
-    user = User.objects.get(slug=user_slug)
-    if request.method == 'POST':
+    user = MyUser.objects.get(slug=user_slug)
+    if request.method == 'POST' :
         form = ImageUploadForm(request.POST, request.FILES)
         if form.is_valid():
             newimage = Photo(image=request.FILES['imagefile'],user=user, file_name=request.FILES['imagefile'])
             newimage.save()
-            return HttpResponseRedirect(reverse('userdetail',kwargs = {'user_slug': user_slug}))
+            return HttpResponseRedirect(user.get_absolute_url())
     else:
         form = ImageUploadForm()
     return render(request, 'photo_sharing/photoupload.html', {'form':form,
@@ -62,7 +66,7 @@ def photouploadview(request, user_slug):
                                                 })
 # delete photos
 def photodeleteview(request, user_slug):
-    user = User.objects.get(slug=user_slug)
+    user = MyUser.objects.get(slug=user_slug)
     photos = Photo.objects.filter(user=user)
 
     form = DeleteForm()
@@ -182,7 +186,7 @@ class CommentThread(FormView, DetailView):
             comment_text = form.cleaned_data['comments']
             user = form.cleaned_data['user']
             Comments.objects.create(
-                user=User.objects.get(slug=user),
+                user=MyUser.objects.get(slug=user),
                 comment=comment_text,
                 photo=parent_comment.photo,
                 parent=parent_comment)

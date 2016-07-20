@@ -5,6 +5,7 @@ from mptt.fields import TreeForeignKey
 import mptt
 import datetime
 # Create your models here.
+from accounts.models import MyUser
 class User(models.Model):
     # id = models.IntegerField()
     first_name = models.CharField(max_length=64)
@@ -15,10 +16,11 @@ class User(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.__unicode__())
         super(User,self).save(*args, **kwargs)
+        
 
 class Photo(models.Model):
     # id = models.IntegerField()
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(MyUser)
     date_time = models.DateTimeField(auto_now_add=True)
     file_name = models.CharField(max_length=256, unique=True)
     image = models.ImageField(null=True, blank=True)
@@ -32,7 +34,7 @@ class Photo(models.Model):
 
 class Comments(models.Model):
     photo = models.ForeignKey(Photo)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(MyUser)
     date_time = models.DateTimeField(auto_now_add=True)
     comment = models.TextField()
 
@@ -41,7 +43,7 @@ class Comments(models.Model):
         return self.comment
 
     def get_absolute_url(self):
-        return reverse('userdetail', kwargs={'user_slug':self.photo.user.slug,})
+            return reverse('photo:userdetail', kwargs={'user_slug':self.photo.user.slug,})
 
 TreeForeignKey(Comments, blank=True, null=True, related_name='children',db_index=True).contribute_to_class(Comments, 'parent')
 mptt.register(Comments, order_insertion_by=['date_time'])

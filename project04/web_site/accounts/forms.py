@@ -1,6 +1,8 @@
 from django import forms
+from django.template.defaultfilters import slugify
 
 from .models import MyUser
+
 class RegisterForm(forms.Form):
     username = forms.CharField(label='Username',)
     email = forms.EmailField(label='Email')
@@ -9,13 +11,14 @@ class RegisterForm(forms.Form):
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
+        username = slugify(username)
         try:
-            MyUser.objects.get(username=username)
-            raise forms.ValidationError("The username has been used try another.")
+            MyUser.objects.get(slug=username)
+            raise forms.ValidationError("The username has been used try another.") 
         except MyUser.DoesNotExist:
             return username
-        except:
-            raise forms.ValidationError("There was an error, please try again or contact us.")
+        except Exception as e:
+            raise e
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

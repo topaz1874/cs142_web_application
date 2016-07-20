@@ -7,7 +7,7 @@
             <h5>{{object.file_name}}</h5>
             <p>created on {{ object.date_time|date:"y/m/d" }}</p>   
         <br> 
-        <a class="btn btn-default" href="{% url 'userdetail' object.user.slug %}" >go back?</a>
+        <a class="btn btn-default" href="{{ object.user.get_absolute_url }}" >go back?</a>
 </div>
 
 {% endblock %}
